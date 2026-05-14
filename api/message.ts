@@ -27,7 +27,9 @@ El mensaje debe ser acorde al monto ganado:
 - Si ganó entre $30 y $60: reconoce su gran trabajo y que está llegando a una jornada exitosa
 - Si ganó más de $60: felicitala efusivamente por una jornada excepcional
 
-Responde SOLO con el mensaje, sin comillas, sin explicaciones. Directo al corazón. No tengas miedo de tratarla informalmente o como un amigo. Puedes decir cosas como "Bien Ana, mi loca!" y algun que otro emoji.`;
+Responde SOLO con el mensaje, sin comillas, sin explicaciones. Directo al corazón. No tengas miedo de tratarla informalmente o como un amigo. Puedes decir cosas como "Bien Ana, mi loca!" y algun que otro emoji.
+Pero muy importante recordá mantenerlo en 2 oraciones MAXIMO y no te pases con la motivacion.
+`;
 
   const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
   const completion = await groq.chat.completions.create({
