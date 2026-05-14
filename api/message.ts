@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import Groq from "groq-sdk";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -29,12 +29,13 @@ El mensaje debe ser acorde al monto ganado:
 
 Responde SOLO con el mensaje, sin comillas, sin explicaciones. Directo al corazón.`;
 
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-  const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
-    contents: prompt,
+  const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.1-8b-instant",
+    messages: [{ role: "user", content: prompt }],
+    max_tokens: 150,
   });
-  const text = response.text ?? "";
+  const text = completion.choices[0]?.message?.content ?? "";
 
   return res.status(200).json({ message: text });
 }
