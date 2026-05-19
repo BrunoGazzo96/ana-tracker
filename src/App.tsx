@@ -307,7 +307,7 @@ function App() {
           <div
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}
           >
-            {calls.map((call, i) => (
+            {[...calls].reverse().map((call, i) => (
               <div
                 key={call.id}
                 style={{
@@ -341,7 +341,7 @@ function App() {
                       flexShrink: 0,
                     }}
                   >
-                    {i + 1}
+                    {calls.length - i}
                   </span>
                   <div>
                     <p
